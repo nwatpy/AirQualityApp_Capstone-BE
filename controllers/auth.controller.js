@@ -1,6 +1,5 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const { validateJwtMiddleware } = require("../auth");
 
 //Import our model so we can us it to interact with the realated data in MongoDB
 const User = require("../models/user.model")
@@ -9,7 +8,7 @@ const User = require("../models/user.model")
 const authController = {
 
     //method to get all recipes using async/await syntax
-    login: async function(req, res, next){
+    login: async function(req, res){
 
         //using a try/catch since we are using asyn/await and want to catch any errors if the code in the try block fails
         try {
@@ -44,6 +43,10 @@ const authController = {
             res.status(400).send("Something went wrong: " + error)
 
         }
+    },
+    logout: function(req, res){
+      req.logout();
+      res.json({ statusCode: res.statusCode });
     }
     
 
