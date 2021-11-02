@@ -1,5 +1,6 @@
 //bring in mongoose so we can create a schema that represents the data for a User
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt")
 
 //Create our schema using mongoose that contains the fields and their data types for our Users
 //More info: https://mongoosejs.com/docs/schematypes.html
@@ -16,6 +17,7 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String, 
         required: true,
+        select: false
     },
     displayName: String
 })

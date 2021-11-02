@@ -21,9 +21,6 @@ const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth.routes');
 const usersRouter = require('./routes/user.routes');
 
-//import our recipe router from recipe.routes.js
-const recipeRouter = require('./routes/recipe.routes')
-
 const app = express();
 
 app.use(logger('dev'));
@@ -36,8 +33,7 @@ app.use(auth.middleware)
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 
-//tell our app to use our recipe routes and prefix them with /api/recipes
-app.use('/api/recipes', recipeRouter)
+//tell our app to use our user routes and prefix them with /api
 app.use('/api/users', usersRouter);
 
 //custom error hadndling
@@ -61,7 +57,7 @@ app.use((err, req, res, next) => {
     } else {
       res.status(err.statusCode || 500);
       res.json({
-        message: statuses[res.statusCode],
+        message: err.message,
         statusCode: res.statusCode
       });
       // morgan is NOT an error handler, so must add error to req so morgan has access to it

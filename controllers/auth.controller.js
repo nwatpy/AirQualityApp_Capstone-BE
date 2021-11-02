@@ -7,7 +7,6 @@ const User = require("../models/user.model")
 
 const authController = {
 
-    //method to get all recipes using async/await syntax
     login: async function(req, res){
 
         //using a try/catch since we are using asyn/await and want to catch any errors if the code in the try block fails
@@ -18,7 +17,7 @@ const authController = {
             //use our model to find recipes that match a query.
             //{} is the current query which really mean find all the recipes
             //we use await here since this is an async process and we want the code to wait for this to finish before moving on to the next line of code
-            let user = await User.findOne({email: email})
+            let user = await User.findOne({email: email}).select('+password')
 
             if ( user &&  (await bcrypt.compare(password, user.password)) ) {
                 const payload = { email: user.email };
@@ -44,9 +43,9 @@ const authController = {
 
         }
     },
-    logout: function(req, res){
-      req.logout();
-      res.json({ statusCode: res.statusCode });
+    logout: async function(req, res){
+      await req.logout();
+      res.status(204).send()
     }
     
 
