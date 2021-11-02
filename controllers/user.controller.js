@@ -5,7 +5,7 @@ const User = require("../models/user.model")
 //build our controller that will have our CRUD and other methods for our users
 const userController = {
 
-    //method to get all recipes using async/await syntax
+    //method to get all users using async/await syntax
     getUsers: async function(req, res){
 
         //using a try/catch since we are using asyn/await and want to catch any errors if the code in the try block fails
@@ -37,7 +37,8 @@ const userController = {
             res.json(newUser)
             
         } catch (error) {
-            res.status(400).send("failed to create user: " + error)
+            console.log("failed to create user: " + error)
+            res.status(400).send("failed to create user")
         }
 
     }
