@@ -41,6 +41,31 @@ const userController = {
             res.status(400).send("failed to create user")
         }
 
+    },
+    updateUser: async function(req, res, next){
+
+        try {
+
+            const email = req.params.email;
+
+            const newUserData = req.body;
+
+            const user = await User.findOne({email: email})
+
+            if(user){
+                Object.assign(user, newUserData)
+                await user.save()
+            }else{
+                res.status(404).send({message: "User not found", statusCode: res.statusCode});
+            }
+
+            res.json(await User.findById(user._id))
+            
+        } catch (error) {
+            console.log("failed to update user: " + error)
+            res.status(400).send("failed to update user")
+        }
+
     }
     
 
