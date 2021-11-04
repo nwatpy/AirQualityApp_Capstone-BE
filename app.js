@@ -20,6 +20,7 @@ mongoose.connect(process.env.DATABASE_URL || "mongodb://127.0.0.1:27017/myApplic
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth.routes');
 const usersRouter = require('./routes/user.routes');
+const swaggerDocsRouter = require("./routes/swagger.routes");
 
 const app = express();
 
@@ -27,8 +28,8 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(auth.middleware)
+app.use(swaggerDocsRouter);
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
