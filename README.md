@@ -9,7 +9,7 @@ In this project, we will use what we know about Node.js, MongoDB, and Express to
  - At least one route for every CRUD operation should represented across all of your resources or endpoints (does not have to be on all resources)
  - Return proper HTTP status codes for API requests
  - Use validation on your Mongoose Models [Built-in validation docs](https://mongoosejs.com/docs/validation.html#built-in-validators)
- - Make an attempt to maintain the OpenAPI Specification for the Swagger documentation
+ - Make an attempt to maintain the OpenAPI Specification for the Swagger documentation [Online Swagger Editior](https://editor.swagger.io/)
  - Ensure all endpoints work with Postman or similar HTTP Client
 
 **Other Requirements**
