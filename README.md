@@ -14,7 +14,7 @@ In this project, we will use what we know about Node.js, MongoDB, and Express to
 
 **Other Requirements**
 
-- Your repository must contain appropriate the git commit history
+- Your repository must contain the appropriate git commit history
     - Typically a commit for each meaningful piece of work completed
 - Each user in the group should work on their own branches and create a PR to merge their changes into master
 - Maintain a project board outlining and prioritizing the user stories and tasks needed to create your minimum viable product (MVP) for your API
