@@ -1,25 +1,34 @@
 //bring in mongoose so we can create a schema that represents the data for a User
 const mongoose = require("mongoose");
+//require bcrytp to help with password encryption
 const bcrypt = require("bcrypt")
 
 //Create our schema using mongoose that contains the fields and their data types for our Users
 //More info: https://mongoosejs.com/docs/schematypes.html
 const userSchema = new mongoose.Schema({
-    firstName: String,
-    lastName: String,
+    firstName: {
+        type: String, 
+        required: true,
+        minlength: 2
+    },
+    lastName: {
+        type: String, 
+        required: true,
+        minlength: 2
+    },
     email: { 
         type: String, 
         required: true, 
         index: { 
             unique: true 
-        } 
+        },
+        match: [/.+\@.+\..+/, "Invalid E-mail Address"],
     },
     password: {
         type: String, 
         required: true,
         select: false
-    },
-    displayName: String
+    }
 })
 
 userSchema.pre('save', function(next) {

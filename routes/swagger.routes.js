@@ -1,34 +1,10 @@
 const express = require("express");
 const swaggerUi = require("swagger-ui-express");
-const swaggerJsdoc = require("swagger-jsdoc")
+const YAML = require("yamljs");
+const openapiSpec = YAML.load("./specification.yaml");
 
 const swaggerDocsRouter = express.Router();
 
-const options = {
-    definition: {
-        openapi: "3.0.1",
-        info: {
-            title: "Capstone API Starter",
-            version: "1.0.0",
-            description:
-                "This is the starter app for the capstone",
-            license: {
-                name: "MIT",
-                url: "https://spdx.org/licenses/MIT.html",
-            },
-        },
-        servers: [
-            {
-                url: "http://localhost:3000",
-                description: "localhost"
-            },
-        ],
-    },
-    apis: ["./routes/user.routes.js"],
-};
-
-const specs = swaggerJsdoc(options);
-
-swaggerDocsRouter.use("/docs", swaggerUi.serve, swaggerUi.setup(specs))
+swaggerDocsRouter.use("/docs", swaggerUi.serve, swaggerUi.setup(openapiSpec))
 
 module.exports = swaggerDocsRouter;
