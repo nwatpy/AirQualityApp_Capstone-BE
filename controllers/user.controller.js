@@ -8,6 +8,22 @@ const userController = {
     //method to get all users using async/await syntax
     getUsers: async function(req, res){
 
+        //create base query
+        let query = {}
+
+        //if firstName filter appears in query parameters then modify the query to do a fuzzy search
+        if(req.query.firstName){
+            const regex = new RegExp(`.*${req.query.firstName}.*$`, "i")
+            query.firstName = {'$regex':regex}
+        }
+
+        //if lastName filter appears in query parameters then modify the query to do a fuzzy search
+        if(req.query.lastName){
+            const regex = new RegExp(`.*${req.query.lastName}.*$`, "i")
+            query.lastName = {'$regex':regex}
+        }
+
+
         //using a try/catch since we are using asyn/await and want to catch any errors if the code in the try block fails
         try {
             
