@@ -37,7 +37,7 @@ const userController = {
             
         } catch (error) {
             console.log("error getting all users: " + error)
-            //if any code in the try block fails, send the user a HTTP status of 400 and a message stating we could not find any recipes
+            //if any code in the try block fails, send the user a HTTP status of 400 and a message stating we could not find any users
             res.status(400).json({
                 message: error.message,
                 statusCode: res.statusCode
