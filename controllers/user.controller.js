@@ -30,7 +30,7 @@ const userController = {
             //use our model to find users that match a query.
             //{} is the current query which really mean find all the users
             //we use await here since this is an async process and we want the code to wait for this to finish before moving on to the next line of code
-            let allUsers = await User.find({})
+            let allUsers = await User.find(query)
             
             //return all the users that we found in JSON format
             res.json(allUsers)
