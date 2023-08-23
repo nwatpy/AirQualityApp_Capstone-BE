@@ -16,6 +16,16 @@ const favoritesController = {
       res.status(400).send("Something went wrong: " + error);
     }
   },
+  getFavorites: async function (req, res) {
+    try {
+      let allFavorites = await Favorite.find({});
+      // return all the favorites that we found in JSON format
+      res.json(allFavorites)
+    } catch (error) {
+      //if any code in the try block fails, send the user a HTTP status of 400 and a message
+      res.status(400).send("Something went wrong: " + error);
+    }
+  }
 };
 
 module.exports = favoritesController;

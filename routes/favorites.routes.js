@@ -7,5 +7,6 @@ const { validateJwtMiddleware } = require("../auth");
 const favoritesController = require("../controllers/favorites.contoller");
 
 router.post("/saveFavorite", favoritesController.saveFavorite)
+router.get("/getFavorites", favoritesController.getFavorites)
 
 module.exports = router;
