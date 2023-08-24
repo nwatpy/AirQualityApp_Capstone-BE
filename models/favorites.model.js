@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const favoritesSchema = new mongoose.Schema({
+  loc_aqi: { type: String, required: true },
   lat: { type: String, required: true },
   lon: { type: String, required: true },
   city: { type: String, required: true },
