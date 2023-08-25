@@ -8,6 +8,7 @@ const favoritesSchema = new mongoose.Schema({
   state: { type: String, required: true },
   favoriteLocation: { type: String, required: true },
   lastRefreshed: { type: Date, required: true },
+  userId: { type: String, required: true },
 });
 
 module.exports = mongoose.model("favorite", favoritesSchema);

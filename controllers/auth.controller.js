@@ -27,6 +27,7 @@ const authController = {
                 res.json({
                   token,
                   email: user.email,
+                  id: user._id,
                   statusCode: res.statusCode
                 });
               } else {

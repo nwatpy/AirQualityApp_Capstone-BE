@@ -7,7 +7,7 @@ const { validateJwtMiddleware } = require("../auth");
 const favoritesController = require("../controllers/favorites.contoller");
 
 router.post("/saveFavorite", favoritesController.saveFavorite)
-router.get("/getFavorites", favoritesController.getFavorites)
+router.get("/getFavorites/:userId", favoritesController.getFavorites)
 router.delete("/deleteFavorite/:id", favoritesController.deleteFavorite)
 router.patch("/updateFavorite/:id", favoritesController.updateFavorite)
 

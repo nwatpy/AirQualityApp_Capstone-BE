@@ -18,7 +18,7 @@ const favoritesController = {
   },
   getFavorites: async function (req, res) {
     try {
-      let allFavorites = await Favorite.find({});
+      let allFavorites = await Favorite.find({ userId: req.params.userId });
       // return all the favorites that we found in JSON format
       res.json(allFavorites);
     } catch (error) {
