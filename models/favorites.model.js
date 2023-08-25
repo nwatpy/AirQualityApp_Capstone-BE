@@ -7,7 +7,7 @@ const favoritesSchema = new mongoose.Schema({
   city: { type: String, required: true },
   state: { type: String, required: true },
   favoriteLocation: { type: String, required: true },
-  createdOn: { type: Date, default: Date.now, required: true },
+  lastRefreshed: { type: Date, required: true },
 });
 
 module.exports = mongoose.model("favorite", favoritesSchema);
